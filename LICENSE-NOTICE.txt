@@ -1,0 +1,13 @@
+VRIL-ZIP — Lossless compression library
+
+Copyright 2026 VLABS, LLC. All rights reserved.
+
+This package is part of the VRIL LABS internal monorepo. It is not yet
+published externally. Distribution outside the @workspace scope requires
+written authorization from VRIL LABS.
+
+Portions ported from the VRIL LABS qbtc-viace-cascade and t7q-gec-v1.3
+research packages (compressWithSchauberger / decompressSchauberger and
+their helpers). Only the lossless Schauberger pipeline was lifted; the
+non-invertible VIACE/QBTC/Quantum-VAE/QUBO components were intentionally
+excluded.
