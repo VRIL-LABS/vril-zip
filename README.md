@@ -21,7 +21,7 @@ pnpm add @VRIL-LABS/vril-zip
 ## Quick start
 
 ```ts
-import { compress, decompress } from "@workspace/vril-zip";
+import { compress, decompress } from "@VRIL-LABS/vril-zip";
 
 const data = new TextEncoder().encode("hello vril");
 const packed = compress(data);            // → Uint8Array (VRZ1 container)
@@ -35,8 +35,8 @@ const back = decompress(packed);          // → original Uint8Array
 Bind a payload's integrity to a key derived from a real-world precondition using **CVKDF** (Centripetal Vortex Key Derivation Function — VRIL LABS' multi-layer KDF; see `./src/cvkdf.ts` and the spec at `attached_assets/CVDKF_-_Technical_Concept_Overview*.md`):
 
 ```ts
-import { compress, decompress } from "@workspace/vril-zip";
-import { cvkdf } from "@workspace/vril-zip/cvkdf";
+import { compress, decompress } from "@VRIL-LABS/vril-zip";
+import { cvkdf } from "@VRIL-LABS/vril-zip/cvkdf";
 
 const key = await cvkdf({
   agentId: "agent-007",
@@ -70,7 +70,7 @@ The full byte-level container spec is in [`SPEC.md`](./SPEC.md). It's self-conta
 Run the benchmark harness:
 
 ```bash
-pnpm --filter @workspace/vril-zip bench
+pnpm --filter @VRIL-LABS/vril-zip bench
 ```
 
 Output goes to stdout and to `BENCHMARKS.md`. Compares VRIL-ZIP against `deflate-raw lvl 9`, `gzip lvl 9`, `brotli q11` (max ratio), and `brotli q5` (throughput sweet spot) on a curated fixture set: lorem text, structured JSON, all-zeros, random bytes, real source files. Every row reports compress/decompress throughput in MB/s, ratio, and a round-trip pass/fail.
@@ -78,7 +78,7 @@ Output goes to stdout and to `BENCHMARKS.md`. Compares VRIL-ZIP against `deflate
 ## Tests
 
 ```bash
-pnpm --filter @workspace/vril-zip test
+pnpm --filter @VRIL-LABS/vril-zip test
 ```
 
 Property + adversarial round-trip suite using Node's built-in `node:test` runner. Includes:
