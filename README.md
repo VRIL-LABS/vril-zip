@@ -122,4 +122,5 @@ The design is grounded in standard, peer-reviewed work.
 
 ## License
 
-Internal to VRIL LABS pending public release. See `LICENSE-NOTICE.txt`.
+*Copyright (c) 2026 VLABS, LLC. All rights reserved.*
+*[VRIL LABS Open Source License v1.0](https://github.com/VRIL-LABS/vril-zip/blob/main/LICENSE) — https://vril.li/license*. 
