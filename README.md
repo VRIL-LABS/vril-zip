@@ -2,7 +2,7 @@
 
 > Provably lossless compression with a φ-permutation pre-pass, a self-describing container (`VRZ1`), CRC32 integrity, and an optional CVKDF-authenticated mode.
 
-VRIL-ZIP is **honest compression**. It wraps Node's `deflate-raw` with a Schauberger-style golden-ratio bijective permutation, an adaptive frequency-remap, and an adaptive run-length stage. Every transform has a verified inverse — every fixture in our property test suite (random sizes, random seeds, real source files, edge cases) round-trips byte-for-byte. The library never claims a ratio that the test harness cannot prove on real input.
+VRIL-ZIP (version 1.0) features **centripital compression**. It wraps Node's `deflate-raw` with a Schauberger-style golden-ratio bijective permutation, an adaptive frequency-remap, and an adaptive run-length stage. Every transform has a verified inverse — every fixture in our property test suite (random sizes, random seeds, real source files, edge cases) round-trips byte-for-byte. The library never claims a ratio that the test harness cannot prove on real input.
 
 ## Install
 
@@ -51,17 +51,11 @@ const back = decompress(packed, { authKey: key });
 
 Wrong key → `AuthenticationError`. The tag is verified in constant time *before* decompression, so a tampered payload never reaches the decoder.
 
-## What VRIL-ZIP is
+## VRIL-ZIP Technical Details
 
 * **Lossless.** `decompress(compress(x)) === x` byte-for-byte for every valid `x`. Tested on synthetic adversarial cases (all-zeros, all-FF, random, alternating, ramps), real source files in this repo, and 64 random-size random-seed property fixtures every test run.
 * **Self-describing.** Container is `VRZ1` magic + version + flags + length + payload + CRC32 (+ optional 32-byte HMAC tag). Decoder needs only the bytes.
 * **Realistic.** On structured text and JSON, ratio is in the same neighborhood as `deflate-raw` level 9, with the φ-permutation contributing single-digit-percent improvements when it helps. On incompressible input (random bytes, JPEG, already-compressed payloads), the container's store-block fallback prevents bloat.
-
-## What VRIL-ZIP is **not**
-
-* **Not a violation of Shannon's source coding theorem.** No algorithm — past, present, or 2026-research-future — can losslessly compress arbitrary input below its entropy. Any tool claiming "1,610:1 ratio on arbitrary data with a working round-trip" has either a hardcoded test case or a non-invertible decoder. VRIL-ZIP makes no such claim.
-* **Not VIACE / QBTC / Quantum-VAE / QUBO / Tensor-Decomposition.** Those algorithms appeared in the original VRIL LABS research package but their decoders are non-invertible by construction (random untrained `tf.layers.dense`, hardcoded literals, many-to-one byte averaging). They were intentionally excluded from VRIL-ZIP v1. If a working decoder is produced for any of them, it can be added behind a v2 entropy-backend flag.
-* **Not a network protocol.** This is a file/buffer codec. Streaming variants are on the v2 roadmap.
 
 ## Container spec
 
@@ -112,7 +106,7 @@ A `zstd` backend (typically 5–15% better ratio on text, 2–3× faster decode)
 
 ## Academic / engineering references
 
-The design is grounded in standard, peer-reviewed work. Citations are not theatre — they're what we measured against.
+The design is grounded in standard, peer-reviewed work.
 
 * Shannon, C.E. — *A Mathematical Theory of Communication*, Bell System Technical Journal, 1948. Sets the entropy floor every lossless compressor lives under.
 * Deutsch, P. — *DEFLATE Compressed Data Format Specification version 1.3*, RFC 1951, May 1996. The entropy backend used by VRIL-ZIP v1.
@@ -121,8 +115,6 @@ The design is grounded in standard, peer-reviewed work. Citations are not theatr
 * Duda, J. — *Asymmetric numeral systems: entropy coding combining speed of Huffman coding with compression rate of arithmetic coding*, arXiv:1311.2540, 2013. Underpinning of zstd's entropy stage; informs our v2 choice.
 * Larsson, N.J. & Moffat, A. — *Off-line dictionary-based compression*, Proc. IEEE 2000. Background for the optional Re-Pair-style stage if added in v2.
 * Weyl, H. — *Über die Gleichverteilung von Zahlen mod. Eins*, Math. Ann. 1916. Justifies the low-discrepancy property of φ-stride permutations.
-
-There is no 2026 publication, suppressed or otherwise, that violates the entropy floor. We searched.
 
 ## License
 
