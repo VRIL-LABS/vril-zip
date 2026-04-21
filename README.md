@@ -13,7 +13,7 @@ VRIL-ZIP (version 1.0.0) features **centripital compression**. It wraps Node's `
 VRIL-ZIP lives in this monorepo as a workspace package:
 
 ```bash
-pnpm add @workspace/vril-zip
+pnpm add @VRIL-LABS/vril-zip
 ```
 
 (External npm publishing intentionally deferred to v2; we want one more cycle of in-house benchmarking before public release.)
