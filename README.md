@@ -2,7 +2,7 @@
   <img src="assets/header.svg" alt="VRIL-ZIP — φ-permutation centripetal compression by VRIL LABS" width="100%"/>
 </p>
 
-# `@workspace/vril-zip`
+# `@VRIL-LABS/vril-zip`
 
 > Provably lossless compression with a φ-permutation pre-pass, a self-describing container (`VRZ1`), CRC32 integrity, and an optional CVKDF-authenticated mode.
 
