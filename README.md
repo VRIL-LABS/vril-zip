@@ -6,7 +6,7 @@
 
 > Provably lossless compression with a φ-permutation pre-pass, a self-describing container (`VRZ1`), CRC32 integrity, and an optional CVKDF-authenticated mode.
 
-VRIL-ZIP (version 0.2.0) features **centripital compression**. It wraps Node's `deflate-raw` with a Schauberger-style golden-ratio bijective permutation, an adaptive frequency-remap, and an adaptive run-length stage. Every transform has a verified inverse — every fixture in our property test suite (random sizes, random seeds, real source files, edge cases) round-trips byte-for-byte. The library never claims a ratio that the test harness cannot prove on real input.
+VRIL-ZIP (version 1.0.0) features **centripital compression**. It wraps Node's `deflate-raw` with a Schauberger-style golden-ratio bijective permutation, an adaptive frequency-remap, and an adaptive run-length stage. Every transform has a verified inverse — every fixture in our property test suite (random sizes, random seeds, real source files, edge cases) round-trips byte-for-byte. The library never claims a ratio that the test harness cannot prove on real input.
 
 ## Install
 
