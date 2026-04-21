@@ -122,5 +122,11 @@ The design is grounded in standard, peer-reviewed work.
 
 ## License
 
-*Copyright (c) 2026 VLABS, LLC. All rights reserved.*
+*Copyright (c) 2026 VLABS, LLC. All rights reserved.* <br>
 *[VRIL LABS Open Source License v1.0](https://github.com/VRIL-LABS/vril-zip/blob/main/LICENSE) — https://vril.li/license*. 
+
+---
+
+<div align="center">
+  <sub>Built by <strong>VRIL LABS</strong> · Encrypting the future</sub>
+</div>
