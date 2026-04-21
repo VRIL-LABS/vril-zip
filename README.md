@@ -51,7 +51,7 @@ const back = decompress(packed, { authKey: key });
 
 Wrong key → `AuthenticationError`. The tag is verified in constant time *before* decompression, so a tampered payload never reaches the decoder.
 
-## VRIL-ZIP Technical Details
+## VRIL-ZIP technicals
 
 * **Lossless.** `decompress(compress(x)) === x` byte-for-byte for every valid `x`. Tested on synthetic adversarial cases (all-zeros, all-FF, random, alternating, ramps), real source files in this repo, and 64 random-size random-seed property fixtures every test run.
 * **Self-describing.** Container is `VRZ1` magic + version + flags + length + payload + CRC32 (+ optional 32-byte HMAC tag). Decoder needs only the bytes.
