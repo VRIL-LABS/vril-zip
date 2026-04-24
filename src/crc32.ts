@@ -1,5 +1,6 @@
 // IEEE 802.3 CRC-32 (polynomial 0xEDB88320 reversed).
 // Same polynomial used by gzip, PNG, zip, and Ethernet.
+// Ported from VRIL-ZIP v1 — exact same implementation.
 
 const TABLE = (() => {
   const t = new Uint32Array(256);
@@ -13,6 +14,10 @@ const TABLE = (() => {
   return t;
 })();
 
+/**
+ * Compute CRC-32 of a byte array.
+ * @returns Unsigned 32-bit CRC value.
+ */
 export function crc32(data: Uint8Array): number {
   let c = 0xffffffff;
   for (let i = 0; i < data.length; i++) {
