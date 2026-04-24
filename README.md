@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/header_v2.svg" alt="VRIL-ZIP v2 — Universal Transformer Edition by VRIL LABS" width="100%"/>
+  <img src="assets/header.svg" alt="VRIL-ZIP v2 — Universal Transformer Edition by VRIL LABS" width="100%"/>
 </p>
 
 # `@VRIL-LABS/vril-zip`
