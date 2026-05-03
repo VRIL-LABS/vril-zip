@@ -2,7 +2,13 @@
   <img src="assets/header.svg" alt="VRIL-ZIP v2 — Universal Transformer Edition by VRIL LABS" width="100%"/>
 </p>
 
-# `@VRIL-LABS/vril-zip`
+<p align="center">
+  <a href="https://www.npmjs.com/package/vril-zip-v2"><img src="https://img.shields.io/npm/v/vril-zip-v2?color=%237b2fbe&logo=npm&label=npm" alt="npm version"/></a>
+  <a href="https://www.npmjs.com/package/vril-zip-v2"><img src="https://img.shields.io/npm/dm/vril-zip-v2?color=%239d4edd&label=downloads" alt="npm downloads"/></a>
+  <a href="https://github.com/VRIL-LABS/vril-zip/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-VRIL%20OSS%20v1.0-%23c77dff" alt="license"/></a>
+</p>
+
+# `vril-zip-v2`
 
 > Provably lossless compression with a universal transformer pipeline, multi-backend entropy coding, content detection, and CVKDF-authenticated mode.
 
@@ -10,18 +16,16 @@ VRIL-ZIP v2.0.0 features a **Universal Transformer Pipeline**. It auto-detects c
 
 ## Install
 
-VRIL-ZIP lives in this monorepo as a workspace package:
-
 ```bash
-pnpm add @VRIL-LABS/vril-zip
+npm install vril-zip-v2
 ```
 
-(External npm publishing intentionally deferred; we want one more cycle of in-house benchmarking before public release.)
+Available on npm: [**vril-zip-v2**](https://www.npmjs.com/package/vril-zip-v2)
 
 ## Quick Start
 
 ```javascript
-import { compress, decompress } from './dist/index.js';
+import { compress, decompress } from 'vril-zip-v2';
 
 const data = new TextEncoder().encode('Hello, VRIL-ZIP v2!');
 const packed = compress(data);
@@ -43,8 +47,8 @@ const restored = decompress(packed);
 Bind a payload's integrity to a key derived from a real-world precondition using **CVKDF** (Centripetal Vortex Key Derivation Function — VRIL LABS' multi-layer KDF; see `./src/cvkdf.ts`):
 
 ```javascript
-import { compress, decompress } from './dist/index.js';
-import { cvkdf } from './dist/cvkdf.js';
+import { compress, decompress } from 'vril-zip-v2';
+import { cvkdf } from 'vril-zip-v2/dist/cvkdf.js';
 
 // Derive a key using CVKDF (in production, use real attestations)
 const key = await cvkdf({
