@@ -76,6 +76,42 @@
       <stop offset="60%"  stop-color="#c77dff" stop-opacity="0.8"/>
       <stop offset="100%" stop-color="#c77dff" stop-opacity="0"/>
     </linearGradient>
+    <!-- smoke swirl blur -->
+    <filter id="smokeBlur" x="-80%" y="-50%" width="260%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="1.1"/>
+    </filter>
+
+    <!-- smoke animation keyframes -->
+    <style>
+      @keyframes smkA {
+        0%   { opacity: 0; transform: translate(0,0) scaleX(1); }
+        18%  { opacity: 0.09; }
+        72%  { opacity: 0.05; transform: translate(-10px,-40px) scaleX(1.8); }
+        100% { opacity: 0;    transform: translate(-16px,-56px) scaleX(2.2); }
+      }
+      @keyframes smkB {
+        0%   { opacity: 0; transform: translate(0,0) scaleX(1); }
+        22%  { opacity: 0.07; }
+        68%  { opacity: 0.04; transform: translate(8px,-34px) scaleX(1.6); }
+        100% { opacity: 0;    transform: translate(12px,-48px) scaleX(2.0); }
+      }
+      @keyframes smkC {
+        0%   { opacity: 0; transform: translate(0,0); }
+        28%  { opacity: 0.06; }
+        70%  { opacity: 0.03; transform: translate(-3px,-38px); }
+        100% { opacity: 0;    transform: translate(-6px,-54px); }
+      }
+      @keyframes smkD {
+        0%   { opacity: 0; transform: translate(0,0) scaleX(1); }
+        20%  { opacity: 0.05; }
+        65%  { opacity: 0.025; transform: translate(5px,-30px) scaleX(1.4); }
+        100% { opacity: 0;     transform: translate(7px,-44px) scaleX(1.8); }
+      }
+      .smk-a { animation: smkA 17s ease-in-out infinite 0s;   transform-origin: 395px 181px; }
+      .smk-b { animation: smkB 22s ease-in-out infinite 5s;   transform-origin: 406px 179px; }
+      .smk-c { animation: smkC 15s ease-in-out infinite 10s;  transform-origin: 400px 184px; }
+      .smk-d { animation: smkD 19s ease-in-out infinite 14s;  transform-origin: 403px 182px; }
+    </style>
   </defs>
 
   <!-- ── background ── -->
@@ -225,6 +261,28 @@
   <circle cx="593.5" cy="316.3" r="2.7" fill="#9d4edd" opacity="0.75" filter="url(#glow)"/>
   <circle cx="403.9" cy="203.2" r="1.7" fill="#e0aaff" opacity="0.58" filter="url(#glow)"/>
   <circle cx="353.1" cy="168.3" r="2.2" fill="#9d4edd" opacity="0.67" filter="url(#glow)"/>
+
+  <!-- ── smoke swirl ── -->
+  <!-- Wisp A: left-curling tendril from core top -->
+  <path class="smk-a"
+        d="M 395,181 C 390,169 397,157 388,146 C 379,135 384,123 376,114"
+        fill="none" stroke="#ede6ff" stroke-width="1.1" stroke-linecap="round"
+        filter="url(#smokeBlur)"/>
+  <!-- Wisp B: right-drifting tendril -->
+  <path class="smk-b"
+        d="M 406,179 C 412,167 406,155 414,144 C 422,133 417,121 424,112"
+        fill="none" stroke="#dbd0f8" stroke-width="0.9" stroke-linecap="round"
+        filter="url(#smokeBlur)"/>
+  <!-- Wisp C: gently rising centre wisp -->
+  <path class="smk-c"
+        d="M 400,184 C 396,172 402,160 398,148 C 394,136 397,124 393,115"
+        fill="none" stroke="#f0e8ff" stroke-width="0.8" stroke-linecap="round"
+        filter="url(#smokeBlur)"/>
+  <!-- Wisp D: faint secondary curl -->
+  <path class="smk-d"
+        d="M 403,182 C 408,172 403,162 410,152 C 417,142 413,133 419,124"
+        fill="none" stroke="#ccc0f0" stroke-width="0.7" stroke-linecap="round"
+        filter="url(#smokeBlur)"/>
 
   <!-- ── vortex core ── -->
   <circle cx="400" cy="202" r="62" fill="url(#core)" filter="url(#coreGlow)"/>
