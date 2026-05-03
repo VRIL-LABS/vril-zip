@@ -47,8 +47,7 @@ const restored = decompress(packed);
 Bind a payload's integrity to a key derived from a real-world precondition using **CVKDF** (Centripetal Vortex Key Derivation Function — VRIL LABS' multi-layer KDF; see `./src/cvkdf.ts`):
 
 ```javascript
-import { compress, decompress } from 'vril-zip-v2';
-import { cvkdf } from 'vril-zip-v2/dist/cvkdf.js';
+import { compress, decompress, cvkdf } from 'vril-zip-v2';
 
 // Derive a key using CVKDF (in production, use real attestations)
 const key = await cvkdf({
