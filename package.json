@@ -17,6 +17,14 @@
   "keywords": ["compression", "deflate", "brotli", "bwt", "lossless"],
   "author": "VRIL LABS",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VRIL-LABS/vril-zip.git"
+  },
+  "homepage": "https://github.com/VRIL-LABS/vril-zip#readme",
+  "bugs": {
+    "url": "https://github.com/VRIL-LABS/vril-zip/issues"
+  },
   "dependencies": {
     "@noble/hashes": "^1.7.1",
     "fflate": "^0.8.2"
